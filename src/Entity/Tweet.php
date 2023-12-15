@@ -37,6 +37,7 @@ class Tweet
     #[ORM\OneToMany(mappedBy: 'tweet', targetEntity: Likes::class)]
     private Collection $likes;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,10 +125,6 @@ class Tweet
     public function getLikes(): Collection
     {
         return $this->likes;
-    }
-    public function getNumberOfLikes(): int
-    {
-        return $this->likes->count();
     }
 
     public function addLike(Likes $like): static

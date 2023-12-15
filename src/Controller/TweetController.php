@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Tweet;
-
 use App\Form\TweetType;
 use Doctrine\ORM\Mapping\Entity;
 use App\Repository\UserRepository;
+use App\Repository\LikesRepository;
 use App\Repository\TweetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,18 +19,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TweetController extends AbstractController
 {
     #[Route('/', name: 'app_tweet_index', methods: ['GET', 'POST'])]
-    public function index(Request $request, TweetRepository $tweetRepository, UserRepository $userRepository, EntityManagerInterface $entityManager, Security $security): Response
+    public function index(Request $request, TweetRepository $tweetRepository, UserRepository $userRepository, LikesRepository $likesRepository, EntityManagerInterface $entityManager, Security $security): Response
     {
+        // Ajout de tweet
         $user = $security->getUser();
         $tweetsAsc = $tweetRepository->findAll(); // Changer l'ordre en ASC
         $tweetsDesc = $tweetRepository->getAllTweetsAscending();
         $lastThreeUsers = $userRepository->findLastThreeRegisteredUsers();
 
-        $tweet = new Tweet();
-        $form = $this->createForm(TweetType::class, $tweet);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $likesCounts = $tweetRepository->countLikesPerTweet();
+        if ($user != null) {
+            # code...
+            $userLikes = $likesRepository->countLikesPerUser($user);
+        }
+
+        $tweet = new Tweet();
+        $formTweet = $this->createForm(TweetType::class, $tweet);
+        $formTweet->handleRequest($request);
+
+        if ($formTweet->isSubmitted() && $formTweet->isValid()) {
             // Récupérer l'utilisateur actuellement connecté
             $user = $security->getUser();
 
@@ -43,13 +51,17 @@ class TweetController extends AbstractController
             return $this->redirectToRoute('app_tweet_index', [], Response::HTTP_SEE_OTHER);
         }
 
+
+
         return $this->render('tweet/index.html.twig', [
             'tweetsDesc' => $tweetsDesc,
             'tweetsAsc' => $tweetsAsc,
             'user' => $user,
             'lastThreeUsers' => $lastThreeUsers,
             'tweet' => $tweet,
-            'form' => $form->createView(),
+            'formTweet' => $formTweet->createView(),
+            'likesCounts' => $likesCounts,
+            'userLikes' => $userLikes ?? null,
         ]);
     }
 

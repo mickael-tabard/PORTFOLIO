@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
     
-    // 
+    // Gestion de l'infobulle pour le logout.
     const userProfile = document.querySelector('#user-profile')
     const bubbleLogout = document.querySelector('.bubble-logout')
 
@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     })
 
-
+    // 
+    const likeButton = document.getElementById('likeButton');
 
 
     

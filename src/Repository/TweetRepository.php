@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
+use App\Entity\Likes;
 use App\Entity\Tweet;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Tweet>
@@ -26,6 +28,17 @@ class TweetRepository extends ServiceEntityRepository
             ->orderBy('t.id', 'DESC')
             ->getQuery()
             ->getResult();
+    }
+    public function countLikesPerTweet(): array
+    {
+        $tweets = $this->createQueryBuilder('t')
+            ->select('t.id, COUNT(l.id) as likeCount')
+            ->leftJoin('t.likes', 'l')
+            ->groupBy('t.id')
+            ->getQuery()
+            ->getResult();
+
+        return $tweets;
     }
 
     //    /**

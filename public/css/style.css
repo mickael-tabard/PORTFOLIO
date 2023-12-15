@@ -389,7 +389,7 @@ main {
     width: 100%;
     padding-right: 16px;
     padding-left: 16px;
-    cursor: pointer;
+    /* cursor: pointer; */
     padding-top: 12px;
     display: flex;
     border-bottom: 1px solid rgb(56, 68, 77);
@@ -974,5 +974,9 @@ main {
 
 .main-profils-plus {
     width: 100%;
+}
 
+#likes {
+    width: 16px;
+    height: 16px;
 }
