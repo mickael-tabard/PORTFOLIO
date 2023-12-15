@@ -1,0 +1,19 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        tweets:
+            uri_prefix: /medias/tweets
+            upload_destination: '%kernel.project_dir%/public/medias/tweets'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        user:
+            uri_prefix: /medias/user
+            upload_destination: '%kernel.project_dir%/public/medias/user'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
