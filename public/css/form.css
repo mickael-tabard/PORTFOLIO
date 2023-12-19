@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(21, 32, 43);
+    font-family: "Noto Sans JP", sans-serif;
+    display: block;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    font-size: 15px;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    max-height: 90vh;
+    /* background-color: rgba(91, 112, 131, 0.4); */
+}
+
+.form-block {
+    height: 650px;
+    min-width: 600px;
+    max-width: 80vw;
+    min-height: 400px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 1.00);
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.form-header {
+    height: 53px;
+    background-color: rgba(0, 0, 0, 0.65);
+    max-width: 600px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-bar {
+    height: 100%;
+    display: flex;
+}
+
+.form-cross {
+    width: 56px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.form-cross span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+.form-cross span:hover {
+    background: rgba(239, 243, 244, 0.1);
+}
+
+.form-cross img {
+    width: 20px;
+    height: 20px;
+}
+
+.form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-content {
+    width: 600px;
+    height: 497px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.form-area {
+    width: 440px;
+    height: 358px;
+}
+
+.form-submit {
+    width: 600px;
+    height: 100px;
+}
+
+.form-title {
+    width: 440px;
+    height: 36px;
+    color: rgb(231, 233, 234);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.form-input {
+    width: 440px;
+    height: 84px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    justify-content: space-between;
+}
+
+.form-input input:focus {
+    outline: #1d9bf0 2px solid;
+}
+
+.form-input h2 {
+    color: white;
+    margin-bottom: 12px;
+}
+
+.form-input p {
+    color: rgb(113, 118, 123);
+}
+
+input {
+    border: 1px solid rgb(51, 54, 57);
+    background-color: rgba(0, 0, 0, 1.00);
+    border-radius: 4px;
+    width: 440px;
+    height: 58px;
+    font-size: 17px;
+    font-weight: 400;
+    padding-left: 8px;
+    padding-right: 8px;
+    overflow: hidden;
+    color: white;
+}
+
+.form-date input {
+    color: rgb(113, 118, 123);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) saturate(100%) invert(49%) sepia(6%) saturate(365%) hue-rotate(169deg) brightness(91%) contrast(90%);
+}
+
+.form-input span {
+    margin-top: 8px;
+    color: rgb(113, 118, 123);
+}

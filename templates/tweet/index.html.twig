@@ -135,9 +135,9 @@
 				{% endif %}
 			</header>
 			<main>
-			<pre>
+				{# <pre>
 				{{ dump(userLikes) }}
-			</pre>
+			</pre> #}
 				<div class="main-center">
 					<nav class="main-navbar">
 						<button class="main-portfolio">
@@ -157,17 +157,6 @@
 						</div>
 						<div class="main-text">
 							{{ include('tweet/_form.html.twig') }}
-							{# <textarea name="" id="" placeholder="Partagez vos impressions ici !"></textarea>
-																																																																																																																																																																																																				<div class="main-files">
-																																																																																																																																																																																																					<svg viewbox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-z80fyv r-19wmn03" style="color: rgb(29, 155, 240);" xmlns="http://www.w3.org/2000/svg">
-																																																																																																																																																																																																						<g>
-																																																																																																																																																																																																							<path d="M3 5.5C3 4.119 4.119 3 5.5 3h13C19.881 3 21 4.119 21 5.5v13c0 1.381-1.119 2.5-2.5 2.5h-13C4.119 21 3 19.881 3 18.5v-13zM5.5 5c-.276 0-.5.224-.5.5v9.086l3-3 3 3 5-5 3 3V5.5c0-.276-.224-.5-.5-.5h-13zM19 15.414l-3-3-5 5-3-3-3 3V18.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-3.086zM9.75 7C8.784 7 8 7.784 8 8.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75S10.716 7 9.75 7z"></path>
-																																																																																																																																																																																																						</g>
-																																																																																																																																																																																																					</svg>
-																																																																																																																																																																																																					<div class="main-button">
-																																																																																																																																																																																																						<span>Poster</span>
-																																																																																																																																																																																																					</div>
-																																																																																																																																																																																																			</div> #}
 						</div>
 					</div>
 					<div class="main-notifications">
@@ -176,6 +165,9 @@
 
 					{# --------------------------- #}
 					{% for tweet in tweetsDesc %}
+						{# <pre>
+																																				{{ dump(tweet) }}
+																																			</pre> #}
 
 						<div class="main-post">
 							<div class="main-picture">
@@ -250,11 +242,15 @@
 
 								<div class="main-bottom">
 									<div class="main-response">
+									<button>
+									
 										<svg viewbox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi" xmlns="http://www.w3.org/2000/svg">
 											<g>
 												<path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z"></path>
 											</g>
 										</svg>
+									</button>
+
 										<div class="main-number">
 											22
 										</div>
@@ -263,9 +259,11 @@
 										<a href="{{ path('app_likes_new', {'id_user': tweet.user.id, 'id_tweet': tweet.id}) }}">
 
 											<svg width="20" height="19" viewbox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" id="likes">
-												<path d="M14.697 2.5C13.475 2.44 12.018 3.01 10.807 4.66L10.002 5.75L9.196 4.66C7.984 3.01 6.526 2.44 5.304 2.5C4.061 2.57 2.955 3.28 2.394 4.41C1.842 5.53 1.761 7.19 2.873 9.23C3.947 11.2 6.13 13.5 10.002 15.84C13.872 13.5 16.054 11.2 17.128 9.23C18.239 7.19 18.158 5.53 17.605 4.41C17.044 3.28 15.939 2.57 14.697 2.5ZM18.884 10.19C17.533 12.67 14.883 15.31 10.505 17.86L10.002 18.16L9.498 17.86C5.119 15.31 2.469 12.67 1.116 10.19C-0.244 7.69 -0.294 5.33 0.602 3.52C1.489 1.73 3.249 0.61 5.203 0.51C6.854 0.42 8.571 1.07 10.001 2.52C11.43 1.07 13.147 0.42 14.797 0.51C16.751 0.61 18.511 1.73 19.398 3.52C20.294 5.33 20.244 7.69 18.884 10.19Z" fill="#f91880"/>
+												<path d="M14.697 2.5C13.475 2.44 12.018 3.01 10.807 4.66L10.002 5.75L9.196 4.66C7.984 3.01 6.526 2.44 5.304 2.5C4.061 2.57 2.955 3.28 2.394 4.41C1.842 5.53 1.761 7.19 2.873 9.23C3.947 11.2 6.13 13.5 10.002 15.84C13.872 13.5 16.054 11.2 17.128 9.23C18.239 7.19 18.158 5.53 17.605 4.41C17.044 3.28 15.939 2.57 14.697 2.5ZM18.884 10.19C17.533 12.67 14.883 15.31 10.505 17.86L10.002 18.16L9.498 17.86C5.119 15.31 2.469 12.67 1.116 10.19C-0.244 7.69 -0.294 5.33 0.602 3.52C1.489 1.73 3.249 0.61 5.203 0.51C6.854 0.42 8.571 1.07 10.001 2.52C11.43 1.07 13.147 0.42 14.797 0.51C16.751 0.61 18.511 1.73 19.398 3.52C20.294 5.33 20.244 7.69 18.884 10.19Z" {% for item in userLikes %} {% if item.tweet.id == tweet.id %} class="liked" {% endif %} {% endfor %}/>
 
-												<path d="M9 3L10 4L11 3L12 2L13 1.5H14H15H16L17 2L18 3L18.5 4L19 5V6V7V8L18.5 9L18 10L17 11L16 12L15 13L14 14L13 15L12 16L11 17L10 17.5L9 17L8 16L7 15L6 14L5 13L4 12L3 11L2 10L1.5 9L1 8V7V6V5L1.5 4L2 3L3 2L4 1.5H5H6H7L8 2L9 3Z" fill="#f91880"/>
+												<path d="M9 3L10 4L11 3L12 2L13 1.5H14H15H16L17 2L18 3L18.5 4L19 5V6V7V8L18.5 9L18 10L17 11L16 12L15 13L14 14L13 15L12 16L11 17L10 17.5L9 17L8 16L7 15L6 14L5 13L4 12L3 11L2 10L1.5 9L1 8V7V6V5L1.5 4L2 3L3 2L4 1.5H5H6H7L8 2L9 3Z" {% for item in userLikes %} {% if item.tweet.id == tweet.id %} class="liked" {% endif %} {% endfor %}/>
+
+
 											</svg>
 
 
@@ -284,11 +282,15 @@
 										</div>
 									</div>
 									<div class="main-response">
+									<button>
+									
 										<svg viewbox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1xvli5t r-1hdv0qi" xmlns="http://www.w3.org/2000/svg">
 											<g>
 												<path d="M8.75 21V3h2v18h-2zM18 21V8.5h2V21h-2zM4 21l.004-10h2L6 21H4zm9.248 0v-7h2v7h-2z"></path>
 											</g>
 										</svg>
+									</button>
+
 										<div class="main-number">
 											801
 										</div>

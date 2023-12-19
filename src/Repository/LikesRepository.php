@@ -32,6 +32,14 @@ class LikesRepository extends ServiceEntityRepository
             ->getResult();
 
         return $userLikes;
+
+
+        // return $this->createQueryBuilder('l')
+        //     ->leftJoin('l.user', 'u')
+        //     ->andWhere('u.id = :userId')
+        //     ->setParameter('userId', $user)
+        //     ->getQuery()
+        //     ->getResult();
     }
     // public function countTweetLikes(): array
     // {

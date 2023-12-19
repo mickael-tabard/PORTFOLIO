@@ -47,50 +47,45 @@ class LikesController extends AbstractController
 
         // Vérifier si le like n'existe pas déjà
         $existingLike = $entityManager->getRepository(Likes::class)->findOneBy([
-            'user' => $user,
+            'user' => $this->getUser(),
             'tweet' => $tweet,
         ]);
 
-        if ($existingLike !== null) {
-            // Le like existe déjà, vous pouvez gérer cette situation ici
-            // Redirection ou message d'erreur
-            //...
-            $entityManager->remove($existingLike);
-            $entityManager->flush();
+        if ($this->getUser() !== null) {
+            # code...
+            if ($existingLike !== null) {
+                // Vérifier si le like existant appartient à l'utilisateur actuel
+                if ($existingLike->getUser() === $this->getUser()) {
+                    // L'utilisateur actuel a déjà liké ce tweet, supprimer ce like
+                    $entityManager->remove($existingLike);
+                    $entityManager->flush();
+                } else {
+                    // Le like existant appartient à un autre utilisateur, peut-être afficher un message d'erreur ou gérer la situation
+                    // ...
+                    $like = new Likes();
+                    $like->setUser($this->getUser());
+                    $like->setTweet($tweet);
 
-            return $this->redirectToRoute('app_tweet_index');
+                    $entityManager->persist($like);
+                    $entityManager->flush();
+                }
+            } else {
+                // Créer un nouvel objet Likes car l'utilisateur n'a pas encore liké ce tweet
+                $like = new Likes();
+                $like->setUser($this->getUser());
+                $like->setTweet($tweet);
+
+                $entityManager->persist($like);
+                $entityManager->flush();
+            }
         } else {
-
-            // Créer un nouvel objet Likes
-            $like = new Likes();
-            $like->setUser($user);
-            $like->setTweet($tweet);
-
-            $entityManager->persist($like);
-            $entityManager->flush();
+            return $this->redirectToRoute('page_d_erreur_user_pas_connecter');
         }
-
-        
-
         return $this->redirectToRoute('app_tweet_index', [], Response::HTTP_SEE_OTHER);
-
-
-        // $like = new Likes();
-        // $form = $this->createForm(Likes1Type::class, $like);
-        // $form->handleRequest($request);
-
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager->persist($like);
-        //     $entityManager->flush();
-
-        //     return $this->redirectToRoute('app_likes_index', [], Response::HTTP_SEE_OTHER);
-        // }
-
-        // return $this->render('likes/new.html.twig', [
-        //     'like' => $like,
-        //     'form' => $form,
-        // ]);
     }
+
+
+
 
     #[Route('/{id}', name: 'app_likes_show', methods: ['GET'])]
     public function show(Likes $like): Response
