@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     })
 
-    // 
-    const likeButton = document.getElementById('likeButton');
+ 
 
 
     

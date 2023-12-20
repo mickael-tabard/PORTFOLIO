@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Likes;
 use App\Entity\Tweet;
-use App\Form\Likes1Type;
+use App\Form\LikesType;
 use App\Repository\LikesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -98,7 +98,7 @@ class LikesController extends AbstractController
     #[Route('/{id}/edit', name: 'app_likes_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Likes $like, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(Likes1Type::class, $like);
+        $form = $this->createForm(LikesType::class, $like);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

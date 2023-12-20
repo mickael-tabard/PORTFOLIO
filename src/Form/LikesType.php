@@ -15,15 +15,14 @@ class LikesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-            ])
             ->add('tweet', EntityType::class, [
                 'class' => Tweet::class,
-'choice_label' => 'id',
+                'choice_label' => 'id',
             ])
-        ;
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'id',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
