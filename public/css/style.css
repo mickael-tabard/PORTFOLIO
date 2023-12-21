@@ -1290,3 +1290,46 @@ main {
     transform: translateY(-130%);
     color: rgb(29, 155, 240);
 }
+
+.agreeTerms {
+    display: flex;
+    justify-content: space-between;
+}
+.agreeTerms label {
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+.agreeTerms label:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+.agreeTerms label.checked:hover {
+    background: rgba(29, 155, 240, 0.10);
+}
+.agreeTerms label span {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 4px;
+    border: 2px solid rgb(113, 118, 123);
+    background: #15202b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.agreeTerms label.checked span {
+    background: rgb(29, 155, 240);
+    border-color: rgb(29, 155, 240);
+}
+
+#registration_form_agreeTerms {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    /* display: none; */
+}

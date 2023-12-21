@@ -69,7 +69,7 @@ class RegistrationFormType extends AbstractType
                 'label' => false, // Remplacez 'Image' par le libellé que vous souhaitez afficher
             ])->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => 'Accepter condition',
+                'label' => false,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',

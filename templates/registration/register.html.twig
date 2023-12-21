@@ -26,12 +26,12 @@
 
 	{# Affichage des erreurs spécifiques à username  #}
 	{# {{ form_row(registrationForm.plainPassword, {
-				 label: 'Password'
-				        }) }}  #}
+					 label: 'Password'
+					        }) }}  #}
 
 	{# {{ form_row(registrationForm.agreeTerms) }} #}
 	{# <label for="registration_form_pictureFile_file">Image</label>	
-					{{ form_row(registrationForm.pictureFile) }} #}
+						{{ form_row(registrationForm.pictureFile) }} #}
 	{# <button type="submit" class="btn"> Register</button> #}
 		<body>
 			<div class="form-home"> <div class="form-home-left">
@@ -100,12 +100,16 @@
 				<div
 					class="form-header">
 					<!-- <div class="form-cross">
-																	                    <img src="iconmonstr-x-mark-lined.svg" alt="">
-																	                </div> -->
+																						                    <img src="iconmonstr-x-mark-lined.svg" alt="">
+																						                </div> -->
 					<div class="form-bar">
 						<div class="form-cross">
 							<span>
-								<svg viewBox="0 0 24 24" aria-hidden="true"  style="color: rgb(239, 243, 244);"><g><path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path></g></svg>
+								<svg viewbox="0 0 24 24" aria-hidden="true" style="color: rgb(239, 243, 244);">
+									<g>
+										<path d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
+									</g>
+								</svg>
 							</span>
 						</div>
 					</div>
@@ -120,7 +124,7 @@
 						<div class="form-area">
 							<div class="form-input">
 								<span>Nom d'utilisateur</span>
-								<svg viewbox="0 0 24 24" aria-hidden="true" >
+								<svg viewbox="0 0 24 24" aria-hidden="true">
 									<g>
 										<path d="M12 3.786c-4.556 0-8.25 3.694-8.25 8.25s3.694 8.25 8.25 8.25c1.595 0 3.081-.451 4.341-1.233l1.054 1.7c-1.568.972-3.418 1.534-5.395 1.534-5.661 0-10.25-4.589-10.25-10.25S6.339 1.786 12 1.786s10.25 4.589 10.25 10.25c0 .901-.21 1.77-.452 2.477-.592 1.731-2.343 2.477-3.917 2.334-1.242-.113-2.307-.74-3.013-1.647-.961 1.253-2.45 2.011-4.092 1.78-2.581-.363-4.127-2.971-3.76-5.578.366-2.606 2.571-4.688 5.152-4.325 1.019.143 1.877.637 2.519 1.342l1.803.258-.507 3.549c-.187 1.31.761 2.509 2.079 2.629.915.083 1.627-.356 1.843-.99.2-.585.345-1.224.345-1.83 0-4.556-3.694-8.25-8.25-8.25zm-.111 5.274c-1.247-.175-2.645.854-2.893 2.623-.249 1.769.811 3.143 2.058 3.319 1.247.175 2.645-.854 2.893-2.623.249-1.769-.811-3.144-2.058-3.319z"></path>
 									</g>
@@ -145,7 +149,20 @@
 								{{ form_row(registrationForm.pictureFile) }}
 
 							</div>
-							{{ form_row(registrationForm.agreeTerms) }}
+							<div class="agreeTerms">
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+								<label for="registration_form_agreeTerms">
+									<span>
+										<svg viewbox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-1plcrui r-lrvibr r-1p0dtai r-jwli3a r-z80fyv r-1d2f490 r-ywje51 r-u8s1d r-zchlnj r-ipm5af">
+											<g>
+												<path d="M9.64 18.952l-5.55-4.861 1.317-1.504 3.951 3.459 8.459-10.948L19.4 6.32 9.64 18.952z"></path>
+											</g>
+										</svg>
+									</span>
+								</label>
+
+								{{ form_row(registrationForm.agreeTerms) }}
+							</div>
 
 
 						</div>
