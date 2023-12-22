@@ -26,12 +26,12 @@
 
 	{# Affichage des erreurs spécifiques à username  #}
 	{# {{ form_row(registrationForm.plainPassword, {
-					 label: 'Password'
-					        }) }}  #}
+							 label: 'Password'
+							        }) }}  #}
 
 	{# {{ form_row(registrationForm.agreeTerms) }} #}
 	{# <label for="registration_form_pictureFile_file">Image</label>	
-						{{ form_row(registrationForm.pictureFile) }} #}
+								{{ form_row(registrationForm.pictureFile) }} #}
 	{# <button type="submit" class="btn"> Register</button> #}
 		<body>
 			<div class="form-home"> <div class="form-home-left">
@@ -74,7 +74,7 @@
 							<span>ou</span>
 							<div class="or-right"></div>
 						</div>
-						<button>Créer un compte</button>
+						<button id="create-account">Créer un compte</button>
 						<div class="form-home-cgu">
 							<p>En vous inscrivant, vous acceptez les
 								<a href="#">Conditions d'utilisation</a>
@@ -95,13 +95,13 @@
 			</div>
 		</div>
 
-		<main>
+		<div class="container-form ">
 			<div class="form-block">
 				<div
 					class="form-header">
 					<!-- <div class="form-cross">
-																						                    <img src="iconmonstr-x-mark-lined.svg" alt="">
-																						                </div> -->
+																																                    <img src="iconmonstr-x-mark-lined.svg" alt="">
+																																                </div> -->
 					<div class="form-bar">
 						<div class="form-cross">
 							<span>
@@ -143,17 +143,23 @@
 							</div>
 							<div class="form-input">
 								<span>Choisissez une image de profil</span>
+								<p>Aucune Image Sélectionner</p>
 								<label for="registration_form_pictureFile_file">
-									<span style="width: 60px; height: 60px; border-radius: 50%; background: red; display: block;"></span>
+									<span></span>
 								</label>
 								{{ form_row(registrationForm.pictureFile) }}
 
 							</div>
 							<div class="agreeTerms">
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, eius!</p>
+								<div class="main-terms">
+									<p>En vous inscrivant, vous acceptez les
+										<a href="#">Conditions d'utilisation</a>
+										et la
+										<a href="#">Politique de confidentialité</a>, notamment l'<a href="#">Utilisation des cookies</a>.</p>
+								</div>
 								<label for="registration_form_agreeTerms">
 									<span>
-										<svg viewbox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-dnmrzs r-1plcrui r-lrvibr r-1p0dtai r-jwli3a r-z80fyv r-1d2f490 r-ywje51 r-u8s1d r-zchlnj r-ipm5af">
+										<svg viewbox="0 0 24 24" aria-hidden="true" class="hide">
 											<g>
 												<path d="M9.64 18.952l-5.55-4.861 1.317-1.504 3.951 3.459 8.459-10.948L19.4 6.32 9.64 18.952z"></path>
 											</g>
@@ -166,12 +172,14 @@
 
 
 						</div>
+				<div class="form-submit">
+					<button>Valider</button>
+				</div>
 						{{ form_end(registrationForm) }}
 					</div>
 				</div>
-				<div class="form-submit"></div>
 			</div>
-		</main>
+		</div>
 
 
 	</body>

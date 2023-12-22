@@ -12,6 +12,7 @@ body {
     background: #15202b;
     font-size: 15px;
     font-family: "Noto Sans JP", sans-serif;
+    overflow: hidden;
 }
 
 section {
@@ -127,7 +128,6 @@ svg {
     width: 90%;
     height: 52px;
     margin-bottom: 16px;
-    margin-top: 16px;
     padding: 12px;
     border-radius: 9999px;
     color: #fff;
@@ -416,6 +416,7 @@ svg {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .main-container {
@@ -1017,9 +1018,7 @@ svg {
     background: rgb(30, 39, 50);
 }
 
-.hide {
-    display: none;
-}
+
 
 .full-page {
     position: absolute;
@@ -1147,8 +1146,6 @@ svg {
 }
 
 .form-content {
-    width: 600px;
-    height: 497px;
     padding-left: 80px;
     padding-right: 80px;
     margin-bottom: 20px;
@@ -1157,15 +1154,37 @@ svg {
 
 .form-area {
     width: 440px;
-    height: 358px;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .form-submit {
-    width: 600px;
-    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.form-submit button {
+    width: 100%;
+    font-size: 17px;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    background-color: rgb(239, 243, 244);
+    border: none;
+    transition-duration: 0.2s;
+    opacity: 0.5;
+    min-width: 52px;
+    outline-style: none;
+    min-height: 52px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 9999px;
+    color: rgb(15, 20, 25);
+    text-align: center;
+    font-weight: 700;
+    line-height: 20px;
 }
 
 .form-title {
@@ -1186,7 +1205,7 @@ svg {
     z-index: 1;
     /* margin: 20px 0; */
 }
-.form-input span {
+.form-input span  {
     position: absolute;
     top: 50%;
     left: 8px;
@@ -1195,6 +1214,17 @@ svg {
     color: rgb(113, 118, 123);
     transition: transform .2s , font-size .2s, color .2s;
 }
+.form-input p {
+    position: absolute;
+    top: 45%;
+    left: 8px;
+    z-index: -1;
+    opacity: 0;
+}
+.form-input p.active {
+    opacity: 1;
+}
+
 .form-input:first-of-type svg {
     fill: #1d9bf0;
     width: 18px;
@@ -1222,9 +1252,9 @@ svg {
     color: rgb(113, 118, 123);
 }
 
-input {
+input, label[for="registration_form_pictureFile_file"] {
     border: 1px solid rgb(51, 54, 57);
-    background: #15202b;
+    background: transparent;
     border-radius: 4px;
     width: 440px;
     height: 58px;
@@ -1244,21 +1274,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     filter: brightness(0) saturate(100%) invert(49%) sepia(6%) saturate(365%) hue-rotate(169deg) brightness(91%) contrast(90%);
 }
 
-main {
+.container-form {
     height: 100vh;
     display: flex;
     font-size: 15px;
     width: 100vw;
     align-items: center;
     justify-content: center;
-    max-height: 90vh;
     background-color: rgba(91, 112, 131, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .form-input #registration_form_email,
 .form-input #registration_form_username,
-.form-input #registration_form_plainPassword,
-.form-input #registration_form_pictureFile_file {
+.form-input #registration_form_plainPassword {
     border: 1px solid rgb(51, 54, 57);
     background: transparent;
     border-radius: 4px;
@@ -1280,9 +1311,11 @@ main {
 #registration_form_email:focus,
 #registration_form_username:focus,
 #registration_form_plainPassword:focus,
-#registration_form_pictureFile_file:focus {
+#registration_form_pictureFile_file:focus,
+label[for="registration_form_pictureFile_file"].active {
     outline: #1d9bf0 2px solid;
 }
+
 
 
 .form-input span.active {
@@ -1331,5 +1364,21 @@ main {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    /* display: none; */
+    display: none;
+}
+#registration_form_pictureFile_file {
+    pointer-events: none;
+    position: absolute;
+    opacity: 0;
+}
+label[for="registration_form_pictureFile_file"] {
+    display: block;
+}
+
+
+
+
+
+.hide {
+    display: none;
 }
